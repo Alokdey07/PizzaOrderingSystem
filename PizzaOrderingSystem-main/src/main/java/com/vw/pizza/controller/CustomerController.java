@@ -1,4 +1,5 @@
 package com.vw.pizza.controller;
 
-public class PizzaController {
+public class CustomerController {
+	
 }
