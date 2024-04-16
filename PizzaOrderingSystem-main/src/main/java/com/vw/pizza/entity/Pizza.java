@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Pizza {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     
     private String type;
@@ -19,7 +19,9 @@ public class Pizza {
     private double price;
     private String size;
     private String crust;
-    
+	
+//  @ManyToOne
+//  private Order order;
 	public Pizza() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -88,9 +90,7 @@ public class Pizza {
 	}
     
 	
-	
-//    @ManyToOne
-//    private Order order;
+
     
     
 }
