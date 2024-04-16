@@ -1,6 +1,5 @@
 package com.vw.pizza.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,17 +8,17 @@ import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Pizza {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    
-    private String type;
-    private String name;
-    private String description;
-    private double price;
-    private String size;
-    private String crust;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	private String type;
+	private String name;
+	private String description;
+	private double price;
+	private String size;
+	private String crust;
+
 //  @ManyToOne
 //  private Order order;
 	public Pizza() {
@@ -88,9 +87,5 @@ public class Pizza {
 		return "Pizza [id=" + id + ", type=" + type + ", name=" + name + ", description=" + description + ", price="
 				+ price + ", size=" + size + ", crust=" + crust + "]";
 	}
-    
-	
 
-    
-    
 }
