@@ -2,6 +2,8 @@ package com.vw.pizza.entity;
 
 import java.util.Date;
 
+import com.vw.entity.Order;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +25,7 @@ public class Delivery {
 	@OneToOne
 	@JoinColumn(name="customer_address")
 	@Column(name="delivery_address")
-	private Customer deliveryAddress;
+	private String deliveryAddress;
 	@Column(name="isDelivered")
 	private Boolean isDelivered;
 	@Column(name="mobile_number")
