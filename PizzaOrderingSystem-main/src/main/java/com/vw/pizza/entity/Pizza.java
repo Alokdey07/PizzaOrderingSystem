@@ -19,8 +19,8 @@ public class Pizza {
 	private String size;
 	private String crust;
 
-//  @ManyToOne
-//  private Order order;
+	@ManyToOne
+	private Order orderRecord;
 	public Pizza() {
 		super();
 		// TODO Auto-generated constructor stub
