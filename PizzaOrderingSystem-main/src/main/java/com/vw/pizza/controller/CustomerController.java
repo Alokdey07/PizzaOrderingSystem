@@ -1,4 +1,7 @@
 package com.vw.pizza.controller;	
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vw.entity.Order;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
 import com.vw.pizza.exception.CustomerNotFound;
@@ -58,7 +62,11 @@ public class CustomerController {
 		return new ResponseEntity<>(customer,HttpStatus.OK);
 	}
 	
-	
+	@GetMapping("/{customerId}/orders")
+	public ResponseEntity<?> getCustomerOrders(@PathVariable Long cid){
+		Optional<Order> orders = customerService.getCustomerOrders(cid);
+		return new ResponseEntity<>(orders,HttpStatus.OK);
+	}
 	
 	
 	

@@ -1,8 +1,12 @@
 package com.vw.pizza.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vw.entity.Order;
 import com.vw.pizza.dao.CustomerDao;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
@@ -27,5 +31,8 @@ public class CustomerService {
 	}
 	public Customer getcustomerById(Long cid) {
 		return customerDao.getcustomerById(cid);
+	}
+	public Optional<Order> getCustomerOrders(Long cid) {
+		return customerDao.getCustomerOrders(cid);
 	}
 }
