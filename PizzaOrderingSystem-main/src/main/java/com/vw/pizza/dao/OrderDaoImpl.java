@@ -2,7 +2,7 @@ package com.vw.pizza.dao;
 
 
 
-import com.vw.entity.Order;
+import com.vw.pizza.entity.Order;
 import com.vw.pizza.repo.OrderRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,8 @@
 package com.vw.pizza.dao;
 
-import com.vw.entity.Order;
 import java.util.List;
+
+import com.vw.pizza.entity.Order;
 
 public interface OrderDao {
     public Order findById(Long id);

@@ -1,10 +1,7 @@
-package com.vw.entity;
+package com.vw.pizza.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.vw.pizza.entity.Customer;
-import com.vw.pizza.entity.Pizza;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,20 +25,25 @@ public class Order {
     private Customer customer;
     @OneToMany(mappedBy = "order")
     private List<Pizza> pizzas = new ArrayList<>();
-    @OneToOne
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
-    @OneToOne
-    @JoinColumn(name = "restro_id")
-    private Restro restro;
-	public Order(Long id, String status, Customer customer, List<Pizza> pizzas, Delivery delivery, Restro restro) {
+	/*
+	 * @OneToOne
+	 * 
+	 * @JoinColumn(name = "delivery_id") private Delivery delivery;
+	 * 
+	 * @OneToOne
+	 * 
+	 * @JoinColumn(name = "restro_id") private Restro restro;
+	 */
+
+	public Order(Long id, String status, Customer customer, List<Pizza> pizzas /* Delivery delivery, Restro restro */) {
 		super();
 		this.id = id;
 		this.status = status;
 		this.customer = customer;
 		this.pizzas = pizzas;
-		this.delivery = delivery;
-		this.restro = restro;
+		/*
+		 * this.delivery = delivery; this.restro = restro;
+		 */
 	}
 	public Order() {
 		super();
@@ -71,18 +73,13 @@ public class Order {
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
-	public Delivery getDelivery() {
-		return delivery;
-	}
-	public void setDelivery(Delivery delivery) {
-		this.delivery = delivery;
-	}
-	public Restro getRestro() {
-		return restro;
-	}
-	public void setRestro(Restro restro) {
-		this.restro = restro;
-	}
+
+	/*
+	 * public Delivery getDelivery() { return delivery; } public void
+	 * setDelivery(Delivery delivery) { this.delivery = delivery; } public Restro
+	 * getRestro() { return restro; } public void setRestro(Restro restro) {
+	 * this.restro = restro; }
+	 */
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", status=" + status + "]";
