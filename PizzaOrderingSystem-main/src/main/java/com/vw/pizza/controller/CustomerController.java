@@ -1,12 +1,13 @@
-package com.vw.pizza.controller;
-
+package com.vw.pizza.controller;	
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vw.pizza.exception.CustomerNotFound;
 import com.vw.pizza.service.CustomerService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -19,7 +20,11 @@ public class CustomerController {
 
 	@PutMapping("/{cid}/address")
 	public ResponseEntity<String> upadteAddress(@PathVariable Long cid, @RequestBody String newAddress) {
+		try {
 	    customerService.updateAddress(cid, newAddress);
 	    return ResponseEntity.ok("Address updated succesfully");
+		} catch(CustomerNotFound ex) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+		}
 	}
 }
