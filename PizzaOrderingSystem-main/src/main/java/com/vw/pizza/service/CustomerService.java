@@ -35,4 +35,7 @@ public class CustomerService {
 	public Optional<Order> getCustomerOrders(Long cid) {
 		return customerDao.getCustomerOrders(cid);
 	}
+	public boolean cancelOrder(Long cid, Long oid) {
+		return customerDao.cancelOrder(cid,oid);
+	}
 }

@@ -53,5 +53,19 @@ public class CustomerImpl implements CustomerDao {
 		}
 		 throw new CustomerNotFound("No order found with this customer id");
 	}
+	@Override
+	public boolean cancelOrder(Long cid, Long oid) {
+		Optional<Customer> customer = customerRepository.findById(cid);
+		if(customer.isPresent()) {
+			Optional<Order>optionalOrder = orderRepo.findByIdAndCid(oid,cid);
+			if(optionalOrder.isPresent()) {
+				Order order = optionalOrder.get();
+				order.setCancelled(true);
+				orderRepo.save(order);
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

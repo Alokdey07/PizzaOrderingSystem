@@ -68,7 +68,14 @@ public class CustomerController {
 		return new ResponseEntity<>(orders,HttpStatus.OK);
 	}
 	
-	
-	
+	@DeleteMapping("/{customerId}/orders/{orderId}")
+	public ResponseEntity<?> cancelOrder(@PathVariable("cid") Long cid, @PathVariable("cid") Long oid) {
+		boolean cancelled = customerService.cancelOrder(cid, oid);
+		if (cancelled) {
+			return new  ResponseEntity<>("order cancelled succesfully",HttpStatus.OK);
+		} else {
+			return new  ResponseEntity<>("order not found or already cancelled",HttpStatus.NOT_FOUND);
+		}
+	}
 	
 }

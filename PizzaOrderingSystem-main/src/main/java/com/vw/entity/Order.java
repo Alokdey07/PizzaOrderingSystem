@@ -32,7 +32,14 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
+    private boolean cancelled;
 
+	public boolean isCancelled() {
+		return cancelled;
+	}
+	public void setCancelled(boolean cancelled) {
+		this.cancelled = cancelled;
+	}
 	/*
 	 * @OneToOne
 	 @JoinColumn(name = "restro_id")*/

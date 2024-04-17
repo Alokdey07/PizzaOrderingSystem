@@ -13,4 +13,5 @@ public interface CustomerDao {
 	public Customer registerCustomer(CustomerDto customerDto);
 	public Customer getcustomerById(Long cid);
 	public Optional<Order> getCustomerOrders(Long cid);
+	public boolean cancelOrder(Long cid, Long oid);
 }
