@@ -3,6 +3,9 @@ package com.vw.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Pizza;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -85,12 +88,5 @@ public class Order {
 		return "Order [id=" + id + ", status=" + status + "]";
 	}
 	
-	
-   
     
-    
-    
-    
-    
-
 }
