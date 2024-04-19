@@ -14,7 +14,7 @@ public interface DeliveryDao {
 
 	public List<Delivery> getDeliveryDetails();
 
-	public String deliveryConfimation(Long oid, boolean isAccepted);
+	public String deliveryConfimation(Long oids, boolean isAccepted);
 
-	public String orderDeliveredOrNotDelivered(Long oid, boolean isDelivered);
+	public String orderDeliveredOrNotDelivered(Long oids, boolean isDelivered);
 }

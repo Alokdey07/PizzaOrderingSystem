@@ -18,9 +18,8 @@ public class Delivery {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long did;
 
-	@OneToOne(mappedBy = "orderA", cascade = CascadeType.ALL)
-	@JoinColumn(name = "order_id")
-	private Order oid;
+	@OneToOne(mappedBy = "Deliveries", cascade = CascadeType.ALL)
+	private Order oids;
 
 	private String deliveryAddress;
 
@@ -35,11 +34,11 @@ public class Delivery {
 	public Delivery() {
 	}
 
-	public Delivery(Long did, Order oid, String deliveryAddress, Boolean isDelivered, Long mobileNo, Date deliveryTime,
+	public Delivery(Long did, Order oids, String deliveryAddress, Boolean isDelivered, Long mobileNo, Date deliveryTime,
 			Boolean isAccepted) {
 		super();
 		this.did = did;
-		this.oid = oid;
+		this.oids = oids;
 		this.deliveryAddress = deliveryAddress;
 		this.isDelivered = isDelivered;
 		this.mobileNo = mobileNo;
@@ -64,11 +63,11 @@ public class Delivery {
 	}
 
 	public Order getOrder() {
-		return oid;
+		return oids;
 	}
 
 	public void setOrder(Order oid) {
-		this.oid = oid;
+		this.oids = oids;
 	}
 
 	public String getDeliveryAddress() {
@@ -105,7 +104,7 @@ public class Delivery {
 
 	@Override
 	public String toString() {
-		return "Delivery [did=" + did + ", oid=" + oid + ", deliveryAddress=" + deliveryAddress + ", isDelivered="
+		return "Delivery [did=" + did + ", oids=" + oids + ", deliveryAddress=" + deliveryAddress + ", isDelivered="
 				+ isDelivered + ", mobileNo=" + mobileNo + ", deliveryTime=" + deliveryTime + ", isAccepted="
 				+ isAccepted + ", getIsAccepted()=" + getIsAccepted() + ", getId()=" + getdId() + ", getOrder()="
 				+ getOrder() + ", getDeliveryAddress()=" + getDeliveryAddress() + ", getIsDelivered()="

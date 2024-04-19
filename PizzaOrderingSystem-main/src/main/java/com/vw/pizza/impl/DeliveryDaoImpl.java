@@ -43,20 +43,20 @@ public class DeliveryDaoImpl implements DeliveryDao {
 	}
 
 	@Override
-	public String deliveryConfimation(Long oid, boolean isAccepted) {
+	public String deliveryConfimation(Long oids, boolean isAccepted) {
 
 		if (isAccepted == true) {
-			Delivery delivery = delRepository.findById(oid).get();
+			Delivery delivery = delRepository.findById(oids).get();
 			return "Order is Accepted" + delivery;
 		}
 		throw new DeliveryIssueException("Delivery is not Accepted");
 
 	}
 
-	public String orderDeliveredOrNotDelivered(Long oid, boolean isDelivered) {
+	public String orderDeliveredOrNotDelivered(Long oids, boolean isDelivered) {
 
 		if (isDelivered = true) {
-			Delivery delivery = delRepository.findById(oid).get();
+			Delivery delivery = delRepository.findById(oids).get();
 			return "order delivered" + delivery;
 		}
 		throw new DeliveryIssueException("Order is on the Way and sorry for delay");

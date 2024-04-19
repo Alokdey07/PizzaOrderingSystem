@@ -32,8 +32,8 @@ public class DeliveryService {
 	public String deliveryConfimation(Long id, boolean isAccepted) {
 		return delDaoImpl.deliveryConfimation(id, isAccepted);
 	}
-	public String orderDeliveredOrNotDelivered(Long oid,boolean isDelivered) {
-		return delDaoImpl.orderDeliveredOrNotDelivered(oid, isDelivered);
+	public String orderDeliveredOrNotDelivered(Long oids,boolean isDelivered) {
+		return delDaoImpl.orderDeliveredOrNotDelivered(oids, isDelivered);
 	}
 
 }

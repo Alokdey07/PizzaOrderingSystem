@@ -31,9 +31,9 @@ public class DeliveryController {
 		return delService.getDeliveryDetails();
 	}
 
-	@GetMapping("/findById/{oid}")
-	public Delivery findByOrderId(@PathVariable Long oid) {
-		return delService.findByOrderId(oid);
+	@GetMapping("/findById/{oids}")
+	public Delivery findByOrderId(@PathVariable Long oids) {
+		return delService.findByOrderId(oids);
 	}
 
 
