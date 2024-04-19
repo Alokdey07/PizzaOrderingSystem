@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vw.entity.Order;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 import com.vw.pizza.exception.CustomerNotFound;
 import com.vw.pizza.repo.CustomerRepository;
 import com.vw.pizza.service.CustomerService;
