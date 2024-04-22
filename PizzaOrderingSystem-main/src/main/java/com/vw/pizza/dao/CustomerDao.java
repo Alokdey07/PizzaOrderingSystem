@@ -2,9 +2,9 @@ package com.vw.pizza.dao;
 
 import java.util.Optional;
 
-import com.vw.entity.Order;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 
 public interface CustomerDao {
 

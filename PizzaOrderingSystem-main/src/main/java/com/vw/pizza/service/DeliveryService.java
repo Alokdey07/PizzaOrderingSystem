@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vw.pizza.entity.Customer;
+import com.vw.pizza.dto.DeliveryDto;
 import com.vw.pizza.entity.Delivery;
 import com.vw.pizza.impl.DeliveryDaoImpl;
 
@@ -14,29 +14,26 @@ public class DeliveryService {
 	@Autowired
 	private DeliveryDaoImpl delDaoImpl;
 
-	public String deliveryDetailsAdd(Delivery delivery) {
+	public String deliveryDetailsAdd(DeliveryDto deliveryDto) {
 
-		return delDaoImpl.deliveryDetailsAdd(delivery);
+		return delDaoImpl.deliveryDetailsAdd(deliveryDto);
 	}
 
 	public List<Delivery> getDeliveryDetails() {
 		return delDaoImpl.getDeliveryDetails();
 	}
 
-	public Delivery findByIDDelivery(Long id) {
-		return delDaoImpl.findByIDDelivery(id);
+	public Delivery findByOrderId(Long id) {
+		return delDaoImpl.findByOrderId(id);
 	}
 
-	public Delivery findByLocation(String address) {
-		// TODO Auto-generated method stub
-		return delDaoImpl.findByLocation(address);
-	}
+	
 
 	public String deliveryConfimation(Long id, boolean isAccepted) {
 		return delDaoImpl.deliveryConfimation(id, isAccepted);
 	}
-	public String orderDeliveredOrNotDelivered(boolean isDelivered) {
-		return delDaoImpl.orderDeliveredOrNotDelivered(isDelivered);
+	public String orderDeliveredOrNotDelivered(Long oids,boolean isDelivered) {
+		return delDaoImpl.orderDeliveredOrNotDelivered(oids, isDelivered);
 	}
 
 }

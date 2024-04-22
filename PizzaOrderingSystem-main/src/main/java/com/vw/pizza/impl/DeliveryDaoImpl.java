@@ -1,24 +1,32 @@
 package com.vw.pizza.impl;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.vw.pizza.dao.DeliveryDao;
+import com.vw.pizza.dto.DeliveryDto;
 import com.vw.pizza.entity.Delivery;
+import com.vw.pizza.exception.DeliveryIssueException;
+import com.vw.pizza.repo.CustomerRepository;
 import com.vw.pizza.repo.DeliveryRepository;
 
 @Component
 public class DeliveryDaoImpl implements DeliveryDao {
 	@Autowired
 	private DeliveryRepository delRepository;
+	@Autowired
+	private CustomerRepository custRepository;
 
-	public String deliveryDetailsAdd(Delivery delivery) {
-
+	public String deliveryDetailsAdd(DeliveryDto deliveryDto) {
+		Delivery delivery = new Delivery();
+		delivery.setdId(deliveryDto.getDid());
+		delivery.setMobileNo(deliveryDto.getMobileNo());
+		delivery.setIsAccepted(deliveryDto.getIsAccepted());
+		delivery.setIsDelivered(deliveryDto.getIsAccepted());
+		delivery.setDeliveryAddress(deliveryDto.getDeliveryAddress());
+		delivery.setDeliveryTime(deliveryDto.getDeliveryTime());
 		delRepository.save(delivery);
 		return "Data saved";
 	}
@@ -29,34 +37,29 @@ public class DeliveryDaoImpl implements DeliveryDao {
 	}
 
 	@Override
-	public Delivery findByIDDelivery(Long id) {
+	public Delivery findByOrderId(Long did) {
 
-		return delRepository.findById(id).get();
+		return delRepository.findById(did).get();
 	}
 
 	@Override
-	public String deliveryConfimation(Long id, boolean isAccepted) {
-		Delivery delivery = delRepository.findById(id).get();
-		if (delivery.getIsDelivered() == true) {
+	public String deliveryConfimation(Long oids, boolean isAccepted) {
 
+		if (isAccepted == true) {
+			Delivery delivery = delRepository.findById(oids).get();
+			return "Order is Accepted" + delivery;
 		}
-		return "Order Accepted" + delivery;
+		throw new DeliveryIssueException("Delivery is not Accepted");
 
 	}
 
-	@Override
-	public Delivery findByLocation(String address) {
-		Delivery delivery = delRepository.findByAddress(address);
-		return delivery;
-	}
+	public String orderDeliveredOrNotDelivered(Long oids, boolean isDelivered) {
 
-	@Override
-	public String orderDeliveredOrNotDelivered(boolean isDelivered) {
-		Delivery delivery = delRepository.isDelivered(isDelivered);
 		if (isDelivered = true) {
-
+			Delivery delivery = delRepository.findById(oids).get();
+			return "order delivered" + delivery;
 		}
-		return "order delivered" + delivery;
+		throw new DeliveryIssueException("Order is on the Way and sorry for delay");
 	}
 
 }

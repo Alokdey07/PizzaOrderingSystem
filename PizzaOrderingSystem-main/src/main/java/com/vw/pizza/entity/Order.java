@@ -1,11 +1,7 @@
-package com.vw.entity;
+package com.vw.pizza.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.vw.pizza.entity.Customer;
-import com.vw.pizza.entity.Delivery;
-import com.vw.pizza.entity.Pizza;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +23,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "orderA")
     private List<Pizza> pizzas = new ArrayList<>();
     @OneToOne
     @JoinColumn(name = "delivery_id")

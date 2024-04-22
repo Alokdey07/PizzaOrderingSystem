@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.vw.entity.Order;
 import com.vw.pizza.dao.CustomerDao;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 @Service
 public class CustomerService {
 	@Autowired

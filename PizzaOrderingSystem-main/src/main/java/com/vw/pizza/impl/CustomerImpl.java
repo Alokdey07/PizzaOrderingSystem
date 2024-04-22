@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.vw.entity.Order;
 import com.vw.pizza.dao.CustomerDao;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 import com.vw.pizza.exception.CustomerNotFound;
 import com.vw.pizza.repo.CustomerRepository;
 import com.vw.pizza.repo.OrderRepo;

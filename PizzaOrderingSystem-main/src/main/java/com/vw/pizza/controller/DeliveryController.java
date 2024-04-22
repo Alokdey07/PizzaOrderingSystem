@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vw.pizza.entity.Customer;
+import com.vw.pizza.dto.DeliveryDto;
 import com.vw.pizza.entity.Delivery;
 import com.vw.pizza.service.DeliveryService;
 
@@ -21,9 +21,9 @@ public class DeliveryController {
 	private DeliveryService delService;
 
 	@PostMapping("/post")
-	public String deliveryDetailsAdd(@RequestBody Delivery delivery) {
+	public String deliveryDetailsAdd(@RequestBody DeliveryDto deliveryDto) {
 
-		return delService.deliveryDetailsAdd(delivery);
+		return delService.deliveryDetailsAdd(deliveryDto);
 	}
 
 	@GetMapping("/deliveryDetails")
@@ -31,23 +31,19 @@ public class DeliveryController {
 		return delService.getDeliveryDetails();
 	}
 
-	@GetMapping("/findById/{id}")
-	public Delivery findByIDDelivery(@PathVariable Long id) {
-		return delService.findByIDDelivery(id);
+	@GetMapping("/findById/{oids}")
+	public Delivery findByOrderId(@PathVariable Long oids) {
+		return delService.findByOrderId(oids);
 	}
 
-	@GetMapping("/findByLocation/{address}")
-	public Delivery findByLocation(@PathVariable String address) {
-		return delService.findByLocation(address);
-	}
 
-	@GetMapping
-	public String deliveryConfimation(Long id, boolean isAccepted) {
+	@GetMapping("/deliveryConfimation/{id}/{isAccepted}")
+	public String deliveryConfimation(@PathVariable Long id, @PathVariable boolean isAccepted) {
 		return delService.deliveryConfimation(id, isAccepted);
 	}
 
-	@GetMapping
-	public String orderDeliveredOrNotDelivered(boolean isDelivered) {
-		return delService.orderDeliveredOrNotDelivered(isDelivered);
+	@GetMapping("/od/{oid}/{isDelivered}")
+	public String orderDeliveredOrNotDelivered(@PathVariable Long oid, @PathVariable boolean isDelivered) {
+		return delService.orderDeliveredOrNotDelivered(oid, isDelivered);
 	}
 }
