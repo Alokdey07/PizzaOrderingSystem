@@ -2,8 +2,6 @@ package com.vw.pizza.entity;
 
 import java.util.Date;
 
-import com.vw.entity.Order;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,9 +21,13 @@ public class Delivery {
 	@Column(name = "order_details")
 	@OneToOne
 	@JoinColumn(name = "order_id")
+	//@OneToOne
+    //@PrimaryKeyJoinColumn
 	private Order order;
-	@OneToOne
-	@JoinColumn(name = "customer_address")
+
+	
+	
+	//@PrimaryKeyJoinColumn
 	@Column(name = "delivery_address")
 	private Customer deliveryAddress;
 	@Column(name = "isDelivered")
@@ -39,8 +42,6 @@ public class Delivery {
 	public Delivery() {
 	}
 
-	
-
 	public Delivery(Long id, Order order, Customer deliveryAddress, Boolean isDelivered, Long mobileNo,
 			Date deliveryTime, Boolean isAccepted) {
 		super();
@@ -52,8 +53,6 @@ public class Delivery {
 		this.deliveryTime = deliveryTime;
 		this.isAccepted = isAccepted;
 	}
-
-
 
 	public Boolean getIsAccepted() {
 		return isAccepted;

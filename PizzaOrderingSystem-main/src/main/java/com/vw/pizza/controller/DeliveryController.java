@@ -36,10 +36,11 @@ public class DeliveryController {
 		return delService.findByIDDelivery(id);
 	}
 
-	@GetMapping("/findByLocation/{address}")
-	public Delivery findByLocation(@PathVariable String address) {
-		return delService.findByLocation(address);
-	}
+	/*
+	 * @GetMapping("/findByLocation/{address}") public Delivery
+	 * findByLocation(@PathVariable String address) { return
+	 * delService.findByLocation(address); }
+	 */
 
 	@GetMapping
 	public String deliveryConfimation(Long id, boolean isAccepted) {

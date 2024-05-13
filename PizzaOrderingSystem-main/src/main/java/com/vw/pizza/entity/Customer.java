@@ -1,8 +1,9 @@
 package com.vw.pizza.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.vw.entity.Order;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -21,9 +22,9 @@ public class Customer {
 	private String address;
 	private String email;
 	private Long mobile;
-	@OneToMany(mappedBy = "Customer",cascade = CascadeType.ALL)
-	private List<Order> orders;
-
+	@OneToMany(mappedBy = "customer")
+	private List<Order> orders = new ArrayList<>();
+	
 	public Customer() {
 		super();
 	}

@@ -6,13 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.vw.entity.Order;
+
 import com.vw.pizza.dao.CustomerDao;
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 import com.vw.pizza.exception.CustomerNotFound;
 import com.vw.pizza.repo.CustomerRepository;
 import com.vw.pizza.repo.OrderRepo;
+
 @Component
 public class CustomerImpl implements CustomerDao {
 
@@ -53,19 +55,13 @@ public class CustomerImpl implements CustomerDao {
 		}
 		 throw new CustomerNotFound("No order found with this customer id");
 	}
-	@Override
-	public boolean cancelOrder(Long cid, Long oid) {
-		Optional<Customer> customer = customerRepository.findById(cid);
-		if(customer.isPresent()) {
-			Optional<Order>optionalOrder = orderRepo.findByIdAndCid(oid,cid);
-			if(optionalOrder.isPresent()) {
-				Order order = optionalOrder.get();
-				order.setCancelled(true);
-				orderRepo.save(order);
-				return true;
-			}
-		}
-		return false;
-	}
+	/*
+	 * @Override public boolean cancelOrder(Long cid, Long oid) { Optional<Customer>
+	 * customer = customerRepository.findById(cid); if(customer.isPresent()) {
+	 * Optional<Order> optionalOrder = orderRepo.findByIdAndCid(cid,oid);
+	 * if(optionalOrder.isPresent()) { Order order = optionalOrder.get();
+	 * order.setCancelled(true); orderRepo.save(order); return true; } } return
+	 * false; }
+	 */
 
 }

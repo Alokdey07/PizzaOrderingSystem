@@ -27,10 +27,10 @@ public class DeliveryService {
 		return delDaoImpl.findByIDDelivery(id);
 	}
 
-	public Delivery findByLocation(String address) {
-		// TODO Auto-generated method stub
-		return delDaoImpl.findByLocation(address);
-	}
+	/*
+	 * public Delivery findByLocation(String address) { // TODO Auto-generated
+	 * method stub return delDaoImpl.findByLocation(address); }
+	 */
 
 	public String deliveryConfimation(Long id, boolean isAccepted) {
 		return delDaoImpl.deliveryConfimation(id, isAccepted);

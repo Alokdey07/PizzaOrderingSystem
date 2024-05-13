@@ -44,11 +44,10 @@ public class DeliveryDaoImpl implements DeliveryDao {
 
 	}
 
-	@Override
-	public Delivery findByLocation(String address) {
-		Delivery delivery = delRepository.findByAddress(address);
-		return delivery;
-	}
+	/*
+	 * @Override public Delivery findByLocation(String address) { Delivery delivery
+	 * = delRepository.findByAddress(address); return delivery; }
+	 */
 
 	@Override
 	public String orderDeliveredOrNotDelivered(boolean isDelivered) {

@@ -8,7 +8,7 @@ import com.vw.pizza.entity.Delivery;
 public interface DeliveryDao {
 	public String deliveryDetailsAdd(Delivery delivery);
 
-	public Delivery findByLocation(String address);
+	//public Delivery findByLocation(String address);
 
 	public Delivery findByIDDelivery(Long id);
 

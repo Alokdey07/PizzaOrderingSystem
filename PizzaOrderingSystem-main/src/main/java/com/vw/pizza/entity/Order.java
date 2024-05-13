@@ -11,8 +11,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "orders")
@@ -22,11 +23,18 @@ public class Order {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	@NotNull
     private String status;
+    
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "cid")
+    //@PrimaryKeyJoinColumn
     private Customer customer;
-    @OneToMany(mappedBy = "orderRecord", cascade = CascadeType.ALL, orphanRemoval = true)
+    
+    @NotNull
+    private boolean cancelled;
+    
+    @OneToMany(mappedBy = "orderRecord")
     private List<Pizza> pizzas = new ArrayList<>();
 	/*
 	 * @OneToOne
@@ -38,20 +46,19 @@ public class Order {
 	 * @JoinColumn(name = "restro_id") private Restro restro;
 	 */
 
-	public Order(Long id, String status, Customer customer, List<Pizza> pizzas /* Delivery delivery, Restro restro */) {
+	
+	public Order() {
+		
+	}
+	public Order(Long id, String status, Customer customer, boolean cancelled, List<Pizza> pizzas) {
 		super();
 		this.id = id;
 		this.status = status;
 		this.customer = customer;
+		this.cancelled = cancelled;
 		this.pizzas = pizzas;
-		/*
-		 * this.delivery = delivery; this.restro = restro;
-		 */
 	}
-	public Order() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,6 +83,14 @@ public class Order {
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
 	}
+	
+	public boolean isCancelled() {
+        return cancelled;
+    }
+
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
 
 	/*
 	 * public Delivery getDelivery() { return delivery; } public void

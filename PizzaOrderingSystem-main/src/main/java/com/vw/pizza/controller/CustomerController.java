@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vw.entity.Order;
+
 import com.vw.pizza.dto.CustomerDto;
 import com.vw.pizza.entity.Customer;
+import com.vw.pizza.entity.Order;
 import com.vw.pizza.exception.CustomerNotFound;
 import com.vw.pizza.repo.CustomerRepository;
 import com.vw.pizza.service.CustomerService;
@@ -27,8 +28,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
-	@Autowired
-	private CustomerRepository customerRepository;
+	
 
 	@PutMapping("/{cid}/address")
 	public ResponseEntity<String> upadteAddressById(@PathVariable Long cid, @RequestBody String newAddress) {
@@ -68,14 +68,14 @@ public class CustomerController {
 		return new ResponseEntity<>(orders,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{customerId}/orders/{orderId}")
-	public ResponseEntity<?> cancelOrder(@PathVariable("cid") Long cid, @PathVariable("cid") Long oid) {
-		boolean cancelled = customerService.cancelOrder(cid, oid);
-		if (cancelled) {
-			return new  ResponseEntity<>("order cancelled succesfully",HttpStatus.OK);
-		} else {
-			return new  ResponseEntity<>("order not found or already cancelled",HttpStatus.NOT_FOUND);
-		}
-	}
+	/*
+	 * @DeleteMapping("/{customerId}/orders/{orderId}") public ResponseEntity<?>
+	 * cancelOrder(@PathVariable("cid") Long cid, @PathVariable("cid") Long oid) {
+	 * boolean cancelled = customerService.cancelOrder(cid, oid); if (cancelled) {
+	 * return new ResponseEntity<>("order cancelled succesfully",HttpStatus.OK); }
+	 * else { return new
+	 * ResponseEntity<>("order not found or already cancelled",HttpStatus.NOT_FOUND)
+	 * ; } }
+	 */
 	
 }

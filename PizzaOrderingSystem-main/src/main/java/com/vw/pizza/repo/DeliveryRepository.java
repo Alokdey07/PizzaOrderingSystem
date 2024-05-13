@@ -7,7 +7,7 @@ import com.vw.pizza.entity.Delivery;
 
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
-	public Delivery findByAddress(String address);
+	//public Delivery findByAddress(String address);
 
 	public Delivery isDelivered(boolean status);
 }
